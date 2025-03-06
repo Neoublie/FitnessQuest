@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import nz.co.dragontech.fitnessquest.common.Header
 import nz.co.dragontech.fitnessquest.fitnessplans.CreateSessionPlan
+import nz.co.dragontech.fitnessquest.fitnessplans.ManageSessionPlans
 import nz.co.dragontech.fitnessquest.ui.theme.FitnessQuestTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,6 +36,10 @@ class MainActivity : ComponentActivity() {
                         onCreateSessionPlanClick = {
                             val intent = Intent(this, CreateSessionPlan::class.java)
                             startActivity(intent)
+                        },
+                        onManageSessionPlansClick = {
+                            val intent = Intent(this, ManageSessionPlans::class.java)
+                            startActivity(intent)
                         }
                     )
                 }
@@ -44,11 +49,17 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainContent(modifier: Modifier = Modifier, onCreateSessionPlanClick: () -> Unit) {
+fun MainContent(
+    modifier: Modifier = Modifier,
+    onCreateSessionPlanClick: () -> Unit,
+    onManageSessionPlansClick: () -> Unit) {
     Column(modifier = modifier) {
         Greeting(name = "Android")
         Button(onClick = onCreateSessionPlanClick) {
             Text(text = "Create Session Plan")
+        }
+        Button(onClick = onManageSessionPlansClick) {
+            Text(text = "Manage Session Plans")
         }
     }
 }
@@ -65,6 +76,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     FitnessQuestTheme {
-        MainContent(onCreateSessionPlanClick = {})
+        MainContent(
+            onCreateSessionPlanClick = {},
+            onManageSessionPlansClick = {}
+        )
     }
 }
