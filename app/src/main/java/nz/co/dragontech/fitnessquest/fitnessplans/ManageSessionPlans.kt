@@ -18,6 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import nz.co.dragontech.fitnessquest.common.Header
+import nz.co.dragontech.fitnessquest.common.FooterMenu
 import nz.co.dragontech.fitnessquest.data.AppDatabase
 import nz.co.dragontech.fitnessquest.data.sessions.SessionPlan
 import nz.co.dragontech.fitnessquest.fitnessplans.ui.theme.FitnessQuestTheme
@@ -31,6 +32,9 @@ class ManageSessionPlans : ComponentActivity() {
                 Scaffold(
                     topBar = {
                         Header(title = "Manage Session Plans", onMenuClick = { /* Handle menu click */ })
+                    },
+                    bottomBar = {
+                        FooterMenu(onBackClick = { finish() })
                     },
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->

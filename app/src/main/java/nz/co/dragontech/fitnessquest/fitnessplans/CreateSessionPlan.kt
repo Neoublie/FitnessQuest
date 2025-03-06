@@ -20,6 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import nz.co.dragontech.fitnessquest.common.Header
+import nz.co.dragontech.fitnessquest.common.FooterMenu
 import nz.co.dragontech.fitnessquest.data.AppDatabase
 import nz.co.dragontech.fitnessquest.data.Exercise
 import nz.co.dragontech.fitnessquest.data.exercises
@@ -35,6 +36,9 @@ class CreateSessionPlan : ComponentActivity() {
                 Scaffold(
                     topBar = {
                         Header(title = "Create Session Plan", onMenuClick = { /* Handle menu click */ })
+                    },
+                    bottomBar = {
+                        FooterMenu(onBackClick = { finish() })
                     },
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
@@ -88,6 +92,7 @@ fun CreateSessionPlanContent(modifier: Modifier = Modifier) {
 @Composable
 fun ExerciseRow(exercise: Exercise, selectedExercises: MutableList<Exercise>) {
     var isChecked by remember { mutableStateOf(false) }
+    var measurement by remember { mutableStateOf("")}
     Row(
         modifier = Modifier
             .fillMaxWidth()
